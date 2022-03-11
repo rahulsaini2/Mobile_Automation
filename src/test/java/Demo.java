@@ -15,7 +15,10 @@ public class Demo extends BaseLib {
 
     @Test
     public void test1() {
-        driver.findElement(By.id("android:id/text1")).click();
+
+        HomePage homePage=new HomePage(driver);
+        homePage.tapOnAccessibility();
+//        driver.findElement(By.id("android:id/text1")).click();
 
         String tx = driver.findElement(By.id("android:id/text1")).getText();
         Assert.assertEquals(tx, "Accessibility Node Provider");
@@ -25,8 +28,7 @@ public class Demo extends BaseLib {
 
 //        androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(Text).instance(0))").click();
 
-        HomePage homePage=new HomePage(driver);
-        homePage.clickLogin();
+
 
         System.out.println(driver.findElement(By.name("Text")).getText());
     }
