@@ -55,4 +55,13 @@ public class ConfigReader {
         String url = pro.getProperty("url");
         return url;
     }
+
+    public String getAppPackage() {
+        String url = pro.getProperty("appPackage");
+        return url;
+    }
+    public String getAppActivity() {
+        String url = pro.getProperty("appActivity");
+        return url;
+    }
 }

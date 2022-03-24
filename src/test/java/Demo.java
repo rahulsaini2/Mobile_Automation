@@ -3,10 +3,12 @@
  */
 
 import Base.BaseLib;
-import PageObjectModel.HomePage;
+import PageObjectModel.LoginPage;
 import org.openqa.selenium.By;
-import org.testng.Assert;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
+
+import java.util.Set;
 
 /**
  * @author rahul saini
@@ -16,21 +18,26 @@ public class Demo extends BaseLib {
     @Test
     public void test1() {
 
-        HomePage homePage=new HomePage(driver);
-        homePage.tapOnAccessibility();
-//        driver.findElement(By.id("android:id/text1")).click();
+        LoginPage homePage = new LoginPage(driver);
+        homePage.selectCountry();
+        homePage.enterInYourName();
+        homePage.tapOnLetsShop();
+        homePage.tapOnAddToCart();
+        homePage.tapOnAppBarCardBtn();
+        homePage.tapOnVisitToWebsiteToCompletePurchaseBtn();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Set<String> contexts = driver.getContextHandles();
+        for (String contextName : contexts) {
+            System.out.println(contextName);
+        }
+        driver.context("WEBVIEW_com.androidsample.generalstore");
+        driver.findElement(By.xpath("//*[@name='q']")).sendKeys("Hello");
+        driver.findElement(By.xpath("//*[@name='q']")).sendKeys(Keys.ENTER);
 
-        String tx = driver.findElement(By.id("android:id/text1")).getText();
-        Assert.assertEquals(tx, "Accessibility Node Provider");
-//        androidDriver.pressKey(new KeyEvent().withKey(AndroidKey.BACK));
-
-//      appiumDriver.findElement(By.xpath("//tr[./th[.//*[text()=\"" + tx + "\"]]]/td//button[@name='picklist']"));
-
-//        androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(Text).instance(0))").click();
-
-
-
-        System.out.println(driver.findElement(By.name("Text")).getText());
     }
 
 }

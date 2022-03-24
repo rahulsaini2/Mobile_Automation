@@ -31,8 +31,8 @@ public class BaseLib extends AppiumServerLib{
         capability.setCapability(MobileCapabilityType.DEVICE_NAME, configReader.getDeviceName());
         capability.setCapability(MobileCapabilityType.PLATFORM_VERSION, configReader.getPlateformVersion());
         capability.setCapability(MobileCapabilityType.PLATFORM_NAME, configReader.getPlateformName());
-        capability.setCapability("app-package", "io.appium.android.apis");
-        capability.setCapability("app-activity", ".ApiDemos");
+        capability.setCapability("app-package", configReader.getAppPackage());
+        capability.setCapability("app-activity", configReader.getAppActivity());
         capability.setCapability("noRest", true);
         URL url = new URL(configReader.getUrl());
         driver = new AppiumDriver(url, capability);
@@ -46,7 +46,8 @@ public class BaseLib extends AppiumServerLib{
 
     @AfterTest
     public void close() {
-        driver.quit();
+
+//        driver.quit();
     }
 
 }

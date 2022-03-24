@@ -23,7 +23,7 @@ import java.time.Duration;
  */
 public class CommonMethod {
 
-    TouchAction action=null;
+    TouchAction action = null;
     private AppiumDriver<AndroidElement> driver;
 
     public CommonMethod(AppiumDriver<AndroidElement> driver) {
@@ -38,10 +38,9 @@ public class CommonMethod {
 
     public void tap(AndroidElement element) {
         if (action == null) {
-         action = new TouchAction(driver);
+            action = new TouchAction(driver);
         }
         action.tap(new TapOptions().withElement(new ElementOption().withElement(element))).perform();
-
 
     }
 }
